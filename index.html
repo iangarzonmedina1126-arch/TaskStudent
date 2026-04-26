@@ -3,19 +3,94 @@
 <head>
     <meta charset="UTF-8">
     <title>Inicio - TaskStudent</title>
+
+    <style>
+        body{
+            margin:0;
+            padding:0;
+            font-family: Arial, sans-serif;
+            background: #f2f6fc;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .contenedor{
+            background: white;
+            width: 500px;
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0px 5px 20px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+
+        img{
+            width: 250px;
+            margin-bottom: 20px;
+        }
+
+        h1{
+            color: #1e4f8a;
+            margin-bottom: 20px;
+        }
+
+         h2{
+            color: #1e4f8a;
+            margin-bottom: 20px;
+        }
+         h3{
+            color: #1e4f8a;
+            margin-bottom: 20px;
+        }
+
+        p{
+            font-size: 18px;
+            margin-bottom: 15px;
+        }
+
+        input{
+            width: 80%;
+            padding: 12px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            outline: none;
+        }
+
+        button{
+            margin-top: 20px;
+            background: #1e73d8;
+            color: white;
+            border: none;
+            padding: 12px 30px;
+            font-size: 16px;
+            border-radius: 8px;
+            cursor: pointer;
+        }
+
+        button:hover{
+            background: #155bb5;
+        }
+    </style>
 </head>
 <body>
 
-    <h1>TaskStudent</h1>
-    <h2>Gestor Académico</h2>
+    <div class="contenedor">
+      
+        <img src="logoweb.png" alt="Logo TaskStudent">
+        <h1>Hola bienvevenido a un</h1>
+        <h2>gestor Académico</h2>
+        <h3>espero disfrute su estancia</h3>
+        <p>Ingrese su nombre de usuario:</p>
 
-    <p>Ingrese su nombre de usuario:</p>
+        <input type="text" id="usuario" placeholder="Escriba su nombre">
 
-    <input type="text" id="usuario" placeholder="Escriba su nombre">
+        <br>
 
-    <br><br>
+        <button onclick="guardarUsuario()">Ingresar</button>
 
-    <button onclick="guardarUsuario()">Ingresar</button>
+    </div>
 
     <script>
         function guardarUsuario() {
