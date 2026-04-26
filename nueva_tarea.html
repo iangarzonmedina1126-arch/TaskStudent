@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Nueva Tarea</title>
+</head>
+<body>
+
+    <h1>Agregar Nueva Tarea</h1>
+
+    <p>Título:</p>
+    <input type="text" id="titulo">
+
+    <p>Descripción:</p>
+    <textarea id="descripcion"></textarea>
+
+    <p>Fecha de entrega:</p>
+    <input type="text" id="fecha">
+
+    <br><br>
+
+    <button onclick="guardarTarea()">Guardar</button>
+
+    <button onclick="window.location.href='tareas.html'">
+        Volver
+    </button>
+
+    <script>
+        function guardarTarea() {
+            let titulo = document.getElementById("titulo").value;
+            let descripcion = document.getElementById("descripcion").value;
+            let fecha = document.getElementById("fecha").value;
+
+            if(titulo == "" || descripcion == "" || fecha == "") {
+                alert("Complete todos los campos");
+                return;
+            }
+
+            let tareas = JSON.parse(localStorage.getItem("tareas")) || [];
+
+            tareas.push({
+                titulo: titulo,
+                descripcion: descripcion,
+                fecha: fecha
+            });
+
+            localStorage.setItem("tareas", JSON.stringify(tareas));
+
+            alert("Tarea guardada correctamente");
+
+            window.location.href = "tareas.html";
+        }
+    </script>
+
+</body>
+</html>

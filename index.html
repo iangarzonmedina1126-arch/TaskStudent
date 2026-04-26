@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Inicio - TaskStudent</title>
+</head>
+<body>
+
+    <h1>TaskStudent</h1>
+    <h2>Gestor Académico</h2>
+
+    <p>Ingrese su nombre de usuario:</p>
+
+    <input type="text" id="usuario" placeholder="Escriba su nombre">
+
+    <br><br>
+
+    <button onclick="guardarUsuario()">Ingresar</button>
+
+    <script>
+        function guardarUsuario() {
+            let nombre = document.getElementById("usuario").value;
+
+            if(nombre == "") {
+                alert("Debe escribir su nombre");
+            } else {
+                localStorage.setItem("usuario", nombre);
+                window.location.href = "tareas.html";
+            }
+        }
+    </script>
+
+</body>
+</html>

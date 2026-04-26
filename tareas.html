@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Tareas Pendientes</title>
+</head>
+<body>
+
+    <h1>Tareas Pendientes</h1>
+
+    <h3 id="saludo"></h3>
+
+    <button onclick="window.location.href='nueva_tarea.html'">
+        Agregar Nueva Tarea
+    </button>
+
+    <button onclick="window.location.href='historial.html'">
+        Ver Historial
+    </button>
+
+    <hr>
+
+    <div id="listaTareas"></div>
+
+    <script>
+        let usuario = localStorage.getItem("usuario");
+        document.getElementById("saludo").innerHTML = "Bienvenido, " + usuario;
+
+        let tareas = JSON.parse(localStorage.getItem("tareas")) || [];
+        let completadas = JSON.parse(localStorage.getItem("completadas")) || [];
+
+        function mostrarTareas() {
+            let lista = document.getElementById("listaTareas");
+            lista.innerHTML = "";
+
+            if(tareas.length == 0) {
+                lista.innerHTML = "<p>No hay tareas registradas.</p>";
+            }
+
+            for(let i = 0; i < tareas.length; i++) {
+                lista.innerHTML += `
+                    <h3>${tareas[i].titulo}</h3>
+                    <p>${tareas[i].descripcion}</p>
+                    <p>Fecha: ${tareas[i].fecha}</p>
+
+                    <button onclick="completar(${i})">
+                        Marcar como completada
+                    </button>
+
+                    <hr>
+                `;
+            }
+        }
+
+        function completar(posicion) {
+            completadas.push(tareas[posicion]);
+            tareas.splice(posicion, 1);
+
+            localStorage.setItem("tareas", JSON.stringify(tareas));
+            localStorage.setItem("completadas", JSON.stringify(completadas));
+
+            mostrarTareas();
+            alert("Tarea completada");
+        }
+
+        mostrarTareas();
+    </script>
+
+</body>
+</html>
